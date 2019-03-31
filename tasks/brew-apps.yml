@@ -1,0 +1,5 @@
+--- 
+- name: Install package/app via homebrew.
+  homebrew:
+    name: "{{ homebrew_packages }}"
+    state: present

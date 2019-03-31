@@ -1,0 +1,14 @@
+---
+- name: Check if /usr/local/bin/vim exists.
+  stat:
+    path: /usr/local/bin/vim
+  register: vim_bin
+
+- name: Check if ~/.vim exists.
+  stat:
+    path: ~/.vim
+  register: vim_config
+
+- name: Install vim config.
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/killin10/spf13-vim/3.0/bootstrap.sh)"
+  when: vim_bin.stat.exists == True and vim_config.stat.exists == False

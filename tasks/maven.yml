@@ -1,0 +1,14 @@
+---
+- name: Ensure ~/.m2 directory exists.
+  file:
+    path: ~/.m2
+    state: directory
+    mode: '700'
+
+- name: Link maven settings files.
+  file:
+    path: "~/.m2/{{ item }}"
+    src: "{{ private_path }}/maven/{{ item }}"
+    state: link
+    mode: '600'
+  with_items: "{{ maven_config_files }}"

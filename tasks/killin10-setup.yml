@@ -1,0 +1,33 @@
+---
+- name: Ensure workspace/github directory exists.
+  file:
+    path: ~/workspace/github
+    state: directory
+
+- name: Ensure app/conf directory exists.
+  file:
+    path: "{{ app_config_path }}"
+    state: directory
+
+- name: Ensure app/bin directory exists.
+  file:
+    path: "{{ app_bin_path }}"
+    state: directory
+
+- name: Ensure app/install directory exists.
+  file:
+    path: "{{ app_path }}/install"
+    state: directory
+
+- name: Copy app config files.
+  copy:
+    src: "{{ files_path }}/{{ item }}"
+    dest: "{{ app_config_path }}/{{ item }}"
+  with_items: "{{ app_config_files }}"
+
+- name: Link private bins to app bin directory.
+  file:
+    path: "{{ app_bin_path }}/{{ item }}"
+    src: "{{ private_path }}/bin/{{ item }}"
+    state: link
+  with_items: "{{ private_bins }}"

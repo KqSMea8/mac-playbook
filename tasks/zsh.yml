@@ -1,0 +1,22 @@
+---
+- name: Check if on-my-zsh exists. 
+  stat: 
+    path: ~/.oh-my-zsh
+  register: oh_my_zsh_config
+
+- name: Install oh-my-zsh.
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: oh_my_zsh_config.stat.exists == False
+
+- name: Copy my zsh config file.
+  copy:
+    src: "{{ files_path }}/zsh_config.zsh"
+    dest: "{{ app_config_path }}/zsh_config.zsh"
+  when: oh_my_zsh_config.stat.exists == True
+
+- name: Link my zsh config file.
+  file:
+    path: ~/.oh-my-zsh/custom/zsh_config.zsh
+    src: "{{ app_config_path }}/zsh_config.zsh"
+    state: link
+  when: oh_my_zsh_config.stat.exists == True

@@ -1,0 +1,20 @@
+---
+- name: Ensure ssh directory exists.
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: '700'
+
+- name: Set ssh config.
+  copy:
+    src: "{{ files_path }}/ssh_config"
+    dest: ~/.ssh/config
+    mode: '600'
+
+- name: Link ssh identify files.
+  file:
+    path: "~/.ssh/{{ item }}"
+    src: "{{ private_path }}/ssh/{{ item }}"
+    state: link
+    mode: '600'
+  with_items: "{{ ssh_identity_files }}"

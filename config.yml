@@ -1,0 +1,64 @@
+---
+downloads: ~/.ansible-downloads/
+
+files_path: ./files
+
+app_path: ~/app
+app_bin_path: "{{ app_path }}/bin"
+app_config_path: "{{ app_path }}/conf"
+private_path: "{{ app_path }}/private"
+
+app_config_files:
+  - ssh_config
+  - zsh_config.zsh
+  - jdk.sh
+  - kube_config.sh
+  - mvn_repo.sh
+
+private_bins:
+  - as.sh
+  - git-m
+  - inc_cert_autoselect
+  - ops_login
+  - test_login
+  - hellogc
+  - larch
+  - larch-remote
+
+ssh_identity_files:
+  - id_rsa_shiwei2012.pub
+  - id_rsa_shiwei2012
+
+kube_config_files:
+  - config-local
+  - config-remote
+
+maven_config_files:
+  - settings.xml.aliyun
+  - settings.xml.inc
+
+homebrew_packages:
+  - cmake
+  - vim
+  - go
+  - node
+  - cowsay
+  - wget
+  - telnet
+  - maven
+  - kubectl
+  - rustup-init
+
+homebrew_cask_packages:
+  - iterm2
+  - alfred
+  - google-chrome
+  - wechat
+  - dingtalk
+  - intellij-idea-ce
+  - visual-studio-code
+  - adobe-acrobat-reader
+  - xmind
+  - staruml
+  - tunnelblick
+  - shadowsocksx-ng

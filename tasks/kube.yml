@@ -1,0 +1,14 @@
+---
+- name: Ensure ~/.kube directory exists.
+  file:
+    path: ~/.kube
+    state: directory
+    mode: '700'
+
+- name: Link kube config files.
+  file:
+    path: "~/.kube/{{ item }}"
+    src: "{{ private_path }}/kube/{{ item }}"
+    state: link
+    mode: '600'
+  with_items: "{{ kube_config_files }}"

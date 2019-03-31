@@ -1,0 +1,14 @@
+---
+- name: Check if rustup-init exists.
+  stat:
+    path: /usr/local/bin/rustup-init
+  register: rustup_init
+
+- name: Check if rustc exists.
+  stat:
+    path: ~/.cargo/bin/rustc
+  register: rustc
+
+- name: Install Rust toolchain.
+  shell: RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup rustup-init -yv
+  when: rustup_init.stat.exists == True and rustc.stat.exists == False
