@@ -28,6 +28,8 @@ private_bins:
 ssh_identity_files:
   - id_rsa_shiwei2012.pub
   - id_rsa_shiwei2012
+  - id_rsa_limu.pub
+  - id_rsa_limu
 
 kube_config_files:
   - config-local
@@ -38,6 +40,7 @@ maven_config_files:
   - settings.xml.inc
 
 homebrew_packages:
+  - autojump
   - cmake
   - vim
   - go
@@ -62,3 +65,7 @@ homebrew_cask_packages:
   - staruml
   - tunnelblick
   - shadowsocksx-ng
+
+npm_packages:
+  - name: tnpm
+    registry: http://registry.npm.alibaba-inc.com
