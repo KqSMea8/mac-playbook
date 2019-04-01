@@ -66,6 +66,7 @@ homebrew_cask_packages:
   - tunnelblick
   - shadowsocksx-ng
 
+npm_registry_inc: http://registry.npm.alibaba-inc.com
 npm_packages:
   - name: tnpm
-    registry: http://registry.npm.alibaba-inc.com
+    registry: "{{ npm_registry_inc }}"
