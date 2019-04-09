@@ -67,6 +67,13 @@ homebrew_cask_packages:
   - shadowsocksx-ng
 
 npm_registry_inc: http://registry.npm.alibaba-inc.com
+npm_registry_tb: http://registry.npm.taobao.org
 npm_packages:
   - name: tnpm
     registry: "{{ npm_registry_inc }}"
+  - name: cnpm
+    registry: "{{ npm_registry_tb }}"
+  - name: bower
+    registry: "{{ npm_registry_tb }}"
+  - name: grunt-cli
+    registry: "{{ npm_registry_tb }}"
