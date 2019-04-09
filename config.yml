@@ -41,6 +41,8 @@ maven_config_files:
 
 homebrew_packages:
   - autojump
+  - tree
+  - pstree
   - cmake
   - vim
   - go
