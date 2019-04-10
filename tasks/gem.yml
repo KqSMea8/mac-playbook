@@ -1,0 +1,7 @@
+- name: Install GEM packages.
+  gem:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    user_install: "{{ item.user_install | default('no') }}"
+  with_items: "{{ gem_packages }}"
+  become: yes

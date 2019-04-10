@@ -16,4 +16,5 @@
     - include_tasks: tasks/vim.yml
     - include_tasks: tasks/rust.yml
     - include_tasks: tasks/node.yml
+    - include_tasks: tasks/gem.yml
     - include_tasks: tasks/brew-cask-apps.yml
